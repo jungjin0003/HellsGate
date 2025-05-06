@@ -5,7 +5,7 @@ PUBLIC HellsGate
 HellsGate PROC
     pop r11
     mov qword ptr [rsp], r11
-    mov eax, rcx
+    mov eax, ecx
     mov r10, rdx
     mov rdx, r8
     mov r8, r9
