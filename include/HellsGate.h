@@ -4,6 +4,9 @@
 
 #include <Windows.h>
 
-NTSTATUS NTAPI HellsGate(DWORD SystemCallNumber, ...);
+#define HELLSGATE(SystemCallNumber, ...) __SetGateNumber(SystemCallNumber) == 0 ? HellsGate(__VA_ARGS__) : 0xC00000AF // STATUS_ILLEGAL_FUNCTION
+
+NTSTATUS NTAPI HellsGate(DWORD64 Arg1, ...);
+int __SetGateNumber(DWORD SystemCallNumber);
 
 #endif

@@ -3,16 +3,17 @@ _TEXT SEGMENT
 PUBLIC HellsGate
 
 HellsGate PROC
-    pop r11
-    mov qword ptr [rsp], r11
-    mov eax, ecx
-    mov r10, rdx
-    mov rdx, r8
-    mov r8, r9
-    mov r9, qword ptr [rsp+20h]
+    mov r10, rcx
+    mov eax, dword ptr fs:[rsp-08h]
     syscall
     ret
 HellsGate ENDP
+
+__SetGateNumber PROC
+    xor rax, rax
+    mov dword ptr fs:[rsp-08h], ecx
+    ret
+__SetGateNumber ENDP
 
 _TEXT ENDS
 
